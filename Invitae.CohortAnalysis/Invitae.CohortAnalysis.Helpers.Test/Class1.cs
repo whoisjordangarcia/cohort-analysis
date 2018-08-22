@@ -2,7 +2,10 @@
 
 namespace Invitae.CohortAnalysis.Helpers.Test
 {
-    public class Class1
+    class Program 
     {
+        public static void Main(string[] args) {
+            Console.WriteLine("Hello world");
+        }
     }
 }

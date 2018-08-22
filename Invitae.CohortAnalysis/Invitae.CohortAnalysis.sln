@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Helpers.Test", "Invitae.CohortAnalysis.Helpers.Test\Invitae.CohortAnalysis.Helpers.Test.csproj", "{AB81115E-3036-495B-ADDC-7DCA5E485382}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Interfaces", "Invitae.CohortAnalysis.Interfaces\Invitae.CohortAnalysis.Interfaces.csproj", "{E801908E-86F8-456D-845C-AB6F674F0284}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,5 +57,9 @@ Global
 		{AB81115E-3036-495B-ADDC-7DCA5E485382}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB81115E-3036-495B-ADDC-7DCA5E485382}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB81115E-3036-495B-ADDC-7DCA5E485382}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E801908E-86F8-456D-845C-AB6F674F0284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E801908E-86F8-456D-845C-AB6F674F0284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E801908E-86F8-456D-845C-AB6F674F0284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E801908E-86F8-456D-845C-AB6F674F0284}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
