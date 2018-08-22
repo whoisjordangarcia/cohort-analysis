@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Doma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Services", "Invitae.CohortAnalysis.Services\Invitae.CohortAnalysis.Services.csproj", "{BA3E95F5-3B22-4FD6-95A5-5D0320927CEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Services.Test", "Invitae.CohortAnalysis.Services.Test\Invitae.CohortAnalysis.Services.Test.csproj", "{CA5E485B-203A-492B-8F76-0219BBA9F98F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,5 +63,9 @@ Global
 		{BA3E95F5-3B22-4FD6-95A5-5D0320927CEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA3E95F5-3B22-4FD6-95A5-5D0320927CEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA3E95F5-3B22-4FD6-95A5-5D0320927CEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA5E485B-203A-492B-8F76-0219BBA9F98F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA5E485B-203A-492B-8F76-0219BBA9F98F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA5E485B-203A-492B-8F76-0219BBA9F98F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA5E485B-203A-492B-8F76-0219BBA9F98F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace Invitae.CohortAnalysis.Interfaces
 {
-    public interface IDataRepository<T>
+    public interface ICsvReader<T>
     {
-        List<T> LoadData();
+        List<T> LoadDataFromCsv();
     }
 }

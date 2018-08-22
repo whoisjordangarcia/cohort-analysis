@@ -6,12 +6,20 @@ using CsvHelper;
 using Invitae.CohortAnalysis.Data.CsvMap;
 using Invitae.CohortAnalysis.Domain.Models;
 using Invitae.CohortAnalysis.Interfaces;
+using Microsoft.Extensions.Options;
 
 namespace Invitae.CohortAnalysis.Services
 {
     public class CustomerService : ICustomerService
     {
-        public List<Customer> LoadData()
+        private readonly Settings _settings;
+
+        public CustomerService(IOptions<Settings> settings)
+        {
+            _settings = settings.Value;
+        }
+
+        public List<Customer> LoadDataFromCsv()
         {
             try
             {
