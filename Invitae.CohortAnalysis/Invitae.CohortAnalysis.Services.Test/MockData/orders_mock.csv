@@ -1,5 +1,4 @@
-
-'l'id,order_number,user_id,created
+id,order_number,user_id,created
 1709,36,344,2014-10-28 00:20:01
 1406,7,608,2014-10-14 23:44:53
 1716,6,2296,2014-10-28 17:47:07

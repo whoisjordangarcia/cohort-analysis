@@ -12,7 +12,7 @@ namespace Invitae.CohortAnalysis.Services.Test
     public class CustomerServiceTests
     {
         [Fact]
-        public void LoadDataFromCsv_GivenACsvPathIsInConfiguration_Then_ReturnListOfCustomers()
+        public void GetAllRecordsFromCsv_GivenACsvPathIsInConfiguration_Then_ReturnListOfCustomers()
         {
 
             Settings settings = new Settings { CustomersCsvPath = $"../../../../Invitae.CohortAnalysis.Services.Test/MockData/customers_mock.csv" };
@@ -21,14 +21,14 @@ namespace Invitae.CohortAnalysis.Services.Test
             mockSettings.Setup(ap => ap.Value).Returns(settings);
 
             var service = new CustomerService(mockSettings.Object);
-            var result = service.LoadDataFromCsv();
+            var result = service.GetAllRecordsFromCsv();
 
             Assert.IsType<List<Customer>>(result);
-            Assert.Equal(result.Count, 5);
-            Assert.Equal(result[0].Id, 35410);
-            Assert.Equal(result[0].Created, new DateTime(2015, 07, 03, 22, 01, 11));
-            Assert.Equal(result[4].Id, 1);
-            Assert.Equal(result[4].Created, new DateTime(2018, 05, 11, 11, 11, 11));
+            Assert.Equal(5, result.Count);
+            Assert.Equal(35410, result[0].Id);
+            Assert.Equal(new DateTime(2015, 07, 03, 22, 01, 11), result[0].Created);
+            Assert.Equal(1, result[4].Id);
+            Assert.Equal(new DateTime(2018, 05, 11, 11, 11, 11), result[4].Created);
         }
     }
 }

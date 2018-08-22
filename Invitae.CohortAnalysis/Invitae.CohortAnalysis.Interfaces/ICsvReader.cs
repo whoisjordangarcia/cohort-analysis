@@ -5,6 +5,6 @@ namespace Invitae.CohortAnalysis.Interfaces
 {
     public interface ICsvReader<T>
     {
-        List<T> LoadDataFromCsv();
+        List<T> GetAllRecordsFromCsv();
     }
 }

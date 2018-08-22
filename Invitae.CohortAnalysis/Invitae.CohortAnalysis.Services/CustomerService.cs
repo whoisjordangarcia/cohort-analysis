@@ -19,7 +19,7 @@ namespace Invitae.CohortAnalysis.Services
             _settings = settings.Value;
         }
 
-        public List<Customer> LoadDataFromCsv()
+        public List<Customer> GetAllRecordsFromCsv()
         {
             try
             {
