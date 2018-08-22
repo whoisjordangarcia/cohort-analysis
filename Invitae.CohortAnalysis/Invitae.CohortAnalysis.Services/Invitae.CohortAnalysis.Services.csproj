@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Invitae.CohortAnalysis.Interfaces\Invitae.CohortAnalysis.Interfaces.csproj" />
+    <ProjectReference Include="..\Invitae.CohortAnalysis.Data\Invitae.CohortAnalysis.Data.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="7.1.1" />
+  </ItemGroup>
+</Project>

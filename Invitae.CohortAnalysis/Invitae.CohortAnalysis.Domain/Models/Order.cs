@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Invitae.CohortAnalysis.Model.Models
+namespace Invitae.CohortAnalysis.Domain.Models
 {
     public class Order
     {

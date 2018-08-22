@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Invitae.CohortAnalysis.Model
+namespace Invitae.CohortAnalysis.Domain
 {
     public class Class1
     {

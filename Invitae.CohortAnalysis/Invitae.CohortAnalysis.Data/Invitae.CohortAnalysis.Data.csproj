@@ -7,4 +7,16 @@
   <ItemGroup>
     <Compile Remove="Class1.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CsvMap\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="7.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove=".DS_Store" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Invitae.CohortAnalysis.Domain\Invitae.CohortAnalysis.Domain.csproj" />
+  </ItemGroup>
 </Project>

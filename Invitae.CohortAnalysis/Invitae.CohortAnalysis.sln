@@ -5,19 +5,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Cons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Data", "Invitae.CohortAnalysis.Data\Invitae.CohortAnalysis.Data.csproj", "{0C47E37A-C162-4148-82F9-0DB4F5FDDEDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Model", "Invitae.CohortAnalysis.Model\Invitae.CohortAnalysis.Model.csproj", "{6C626011-742A-4B35-98CA-C79530865DE8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Business", "Invitae.CohortAnalysis.Business\Invitae.CohortAnalysis.Business.csproj", "{BC112978-B98A-4146-B3CB-D340539C620D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Helpers", "Invitae.CohortAnalysis.Helpers\Invitae.CohortAnalysis.Helpers.csproj", "{4278A4DB-6CCF-4733-811C-44D48FDEE1D1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Business.Test", "Invitae.CohortAnalysis.Business.Test\Invitae.CohortAnalysis.Business.Test.csproj", "{2FE689B4-BD4C-4FF0-9CDE-FCE7F213ABE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Data.Test", "Invitae.CohortAnalysis.Data.Test\Invitae.CohortAnalysis.Data.Test.csproj", "{5E465FC4-4D96-4729-8A2A-39EAEF779F6B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Helpers.Test", "Invitae.CohortAnalysis.Helpers.Test\Invitae.CohortAnalysis.Helpers.Test.csproj", "{AB81115E-3036-495B-ADDC-7DCA5E485382}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Interfaces", "Invitae.CohortAnalysis.Interfaces\Invitae.CohortAnalysis.Interfaces.csproj", "{E801908E-86F8-456D-845C-AB6F674F0284}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Domain", "Invitae.CohortAnalysis.Domain\Invitae.CohortAnalysis.Domain.csproj", "{07A86FC7-94BF-42B3-9196-7A0B39921212}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Services", "Invitae.CohortAnalysis.Services\Invitae.CohortAnalysis.Services.csproj", "{BA3E95F5-3B22-4FD6-95A5-5D0320927CEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,6 @@ Global
 		{0C47E37A-C162-4148-82F9-0DB4F5FDDEDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C47E37A-C162-4148-82F9-0DB4F5FDDEDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C47E37A-C162-4148-82F9-0DB4F5FDDEDF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6C626011-742A-4B35-98CA-C79530865DE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6C626011-742A-4B35-98CA-C79530865DE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6C626011-742A-4B35-98CA-C79530865DE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6C626011-742A-4B35-98CA-C79530865DE8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BC112978-B98A-4146-B3CB-D340539C620D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BC112978-B98A-4146-B3CB-D340539C620D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC112978-B98A-4146-B3CB-D340539C620D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,10 +45,6 @@ Global
 		{2FE689B4-BD4C-4FF0-9CDE-FCE7F213ABE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FE689B4-BD4C-4FF0-9CDE-FCE7F213ABE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FE689B4-BD4C-4FF0-9CDE-FCE7F213ABE4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E465FC4-4D96-4729-8A2A-39EAEF779F6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E465FC4-4D96-4729-8A2A-39EAEF779F6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E465FC4-4D96-4729-8A2A-39EAEF779F6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E465FC4-4D96-4729-8A2A-39EAEF779F6B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AB81115E-3036-495B-ADDC-7DCA5E485382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AB81115E-3036-495B-ADDC-7DCA5E485382}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB81115E-3036-495B-ADDC-7DCA5E485382}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -61,5 +53,13 @@ Global
 		{E801908E-86F8-456D-845C-AB6F674F0284}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E801908E-86F8-456D-845C-AB6F674F0284}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E801908E-86F8-456D-845C-AB6F674F0284}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07A86FC7-94BF-42B3-9196-7A0B39921212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07A86FC7-94BF-42B3-9196-7A0B39921212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07A86FC7-94BF-42B3-9196-7A0B39921212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07A86FC7-94BF-42B3-9196-7A0B39921212}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA3E95F5-3B22-4FD6-95A5-5D0320927CEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA3E95F5-3B22-4FD6-95A5-5D0320927CEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA3E95F5-3B22-4FD6-95A5-5D0320927CEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA3E95F5-3B22-4FD6-95A5-5D0320927CEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

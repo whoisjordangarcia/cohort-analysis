@@ -8,6 +8,6 @@
     <Compile Remove="Class1.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <ProjectReference Include="..\Invitae.CohortAnalysis.Domain\Invitae.CohortAnalysis.Domain.csproj" />
   </ItemGroup>
 </Project>
