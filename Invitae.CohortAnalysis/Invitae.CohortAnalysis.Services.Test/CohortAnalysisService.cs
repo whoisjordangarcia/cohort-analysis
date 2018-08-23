@@ -3,10 +3,10 @@ using Xunit;
 
 namespace Invitae.CohortAnalysis.Services.Test
 {
-    public class UnitTest1
+    public class CohortAnalaysisServiceTests
     {
         [Fact]
-        public void Test1()
+        public void LoadData_GivenSources()
         {
 
         }
