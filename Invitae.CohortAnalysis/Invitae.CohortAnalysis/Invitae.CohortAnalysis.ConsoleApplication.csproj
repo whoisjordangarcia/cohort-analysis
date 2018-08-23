@@ -14,5 +14,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Invitae.CohortAnalysis.Interfaces\Invitae.CohortAnalysis.Interfaces.csproj" />
     <ProjectReference Include="..\Invitae.CohortAnalysis.Domain\Invitae.CohortAnalysis.Domain.csproj" />
+    <ProjectReference Include="..\Invitae.CohortAnalysis.Services\Invitae.CohortAnalysis.Services.csproj" />
   </ItemGroup>
 </Project>

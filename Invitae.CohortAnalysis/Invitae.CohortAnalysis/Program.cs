@@ -2,6 +2,8 @@
 using System.IO;
 using Invitae.CohortAnalysis.ConsoleApplication;
 using Invitae.CohortAnalysis.Domain.Models;
+using Invitae.CohortAnalysis.Interfaces;
+using Invitae.CohortAnalysis.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -28,6 +30,10 @@ namespace Invitae.CohortAnalysis
 
         private static void ConfigureServices(IServiceCollection serviceCollection)
         {
+            serviceCollection.AddTransient<ICohortAnalysisService, CohortAnalysisService>();
+            serviceCollection.AddTransient<ICustomerService, CustomerService>();
+            serviceCollection.AddTransient<IOrderService, OrderService>();
+
             serviceCollection.AddTransient<App>();
         }
     }
