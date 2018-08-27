@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invitae.CohortAnalysis.Services.Test", "Invitae.CohortAnalysis.Services.Test\Invitae.CohortAnalysis.Services.Test.csproj", "{CA5E485B-203A-492B-8F76-0219BBA9F98F}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{5A10A3FA-9C15-4A0C-A81F-41BF822ECC36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,5 +69,9 @@ Global
 		{CA5E485B-203A-492B-8F76-0219BBA9F98F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA5E485B-203A-492B-8F76-0219BBA9F98F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA5E485B-203A-492B-8F76-0219BBA9F98F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A10A3FA-9C15-4A0C-A81F-41BF822ECC36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A10A3FA-9C15-4A0C-A81F-41BF822ECC36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A10A3FA-9C15-4A0C-A81F-41BF822ECC36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A10A3FA-9C15-4A0C-A81F-41BF822ECC36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

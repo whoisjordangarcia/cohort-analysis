@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  cohort-analysis-console-application:
+    build:
+      context: .
+      dockerfile: Invitae.CohortAnalysis/Dockerfile
+    volumes:
+      - ../DataFiles:/DataFiles
+      - ../OutputResults:/OutputResults
