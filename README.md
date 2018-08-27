@@ -24,7 +24,7 @@ docker-compose run cohort-analysis-console-application -t
 
 
 ### Output Result in .csv format
-![preview](https://cl.ly/7ed37767c70e)
+![preview](https://cl.ly/7ed37767c70e/Screen%252520Shot%2525202018-08-26%252520at%25252011.50.41%252520PM.png)
 
 ## How to run the test cases?
 Navigate to `Invitae.CohortAnalysis` and run the following command
