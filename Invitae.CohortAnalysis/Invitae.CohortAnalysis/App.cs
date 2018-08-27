@@ -63,9 +63,7 @@ namespace Invitae.CohortAnalysis.ConsoleApplication
         private string RetrieveTimeZoneFromUser() {
             Console.WriteLine("Please provide your local timezone. eg. " +
                   "'America/New_York', " +
-                  "'Pacific Standard Time', " +
-                  "'America/Los_Angeles', " +
-                  "'US Eastern Standard Time'");
+                  "'America/Los_Angeles'");
 
            string timezone = getUserInput();
 
