@@ -19,6 +19,13 @@ docker-compose run cohort-analysis-console-application -t
 ```
 **NOTE:** any data files or outputted results will read/save within `./DataFiles` and `./OutputResults`
 
+### Preview
+![preview](https://cl.ly/7e7df49ff1e2/Screen%252520Recording%2525202018-08-26%252520at%25252011.48%252520PM.gif)
+
+
+### Output Result in .csv format
+![preview](https://cl.ly/7ed37767c70e/Screen%252520Shot%2525202018-08-26%252520at%25252011.50.41%252520PM.png)
+
 ## How to run the test cases?
 Navigate to `Invitae.CohortAnalysis` and run the following command
 ```sh
