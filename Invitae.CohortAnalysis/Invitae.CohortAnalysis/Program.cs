@@ -22,6 +22,7 @@ namespace Invitae.CohortAnalysis
             IConfiguration config = new ConfigurationBuilder()
               .SetBasePath(Directory.GetCurrentDirectory())
               .AddJsonFile("appsettings.json")
+                // Override appsettings when environment is present. 
               .AddJsonFile($"appsettings.{environmentName}.json", optional: true)
               .Build();
 
@@ -34,6 +35,8 @@ namespace Invitae.CohortAnalysis
 
         private static void ConfigureServices(IServiceCollection serviceCollection)
         {
+            // Dependency Injection
+
             // services
             serviceCollection.AddTransient<ICohortAnalysisService, CohortAnalysisService>();
             serviceCollection.AddTransient<ICustomerService, CustomerService>();
