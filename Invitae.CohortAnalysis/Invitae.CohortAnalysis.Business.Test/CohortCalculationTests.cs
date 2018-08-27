@@ -2,7 +2,7 @@
 
 namespace Invitae.CohortAnalysis.Business.Test
 {
-    public class Class1
+    public class CohortCalculationTests
     {
     }
 }

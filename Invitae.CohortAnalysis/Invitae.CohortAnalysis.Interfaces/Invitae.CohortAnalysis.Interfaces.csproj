@@ -10,4 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Invitae.CohortAnalysis.Domain\Invitae.CohortAnalysis.Domain.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="7.1.1" />
+  </ItemGroup>
 </Project>

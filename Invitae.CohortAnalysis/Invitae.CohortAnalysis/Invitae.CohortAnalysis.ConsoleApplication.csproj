@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,5 +16,10 @@
     <ProjectReference Include="..\Invitae.CohortAnalysis.Interfaces\Invitae.CohortAnalysis.Interfaces.csproj" />
     <ProjectReference Include="..\Invitae.CohortAnalysis.Domain\Invitae.CohortAnalysis.Domain.csproj" />
     <ProjectReference Include="..\Invitae.CohortAnalysis.Services\Invitae.CohortAnalysis.Services.csproj" />
+    <ProjectReference Include="..\Invitae.CohortAnalysis.Business\Invitae.CohortAnalysis.Business.csproj" />
+    <ProjectReference Include="..\Invitae.CohortAnalysis.Helpers\Invitae.CohortAnalysis.Helpers.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="BUCKET_RANGE" />
   </ItemGroup>
 </Project>

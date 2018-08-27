@@ -13,27 +13,19 @@ namespace Invitae.CohortAnalysis.Services
     public class CustomerService : ICustomerService
     {
         private readonly Settings _settings;
+        private readonly ICsvService _csvService;
 
-        public CustomerService(IOptions<Settings> settings)
+        public CustomerService(IOptions<Settings> settings,
+                               ICsvService csvService)
         {
             _settings = settings.Value;
+            _csvService = csvService;
         }
 
-        public List<Customer> GetAllRecordsFromCsv()
+        public IEnumerable<Customer> LoadRecordsFromPath(string absolutePath)
         {
-            try
-            {
-                using (var streamReader = new StreamReader(_settings.CustomersCsvPath))
-                {
-                    var reader = new CsvReader(streamReader);
-                    reader.Configuration.RegisterClassMap<CustomerMap>();
-                    return reader.GetRecords<Customer>().ToList();
-                }
-            }
-            catch (Exception e)
-            {
-                throw new Exception($"Failed retrieving 'Customer'", e);
-            }
+            return _csvService
+                .RetrieveRecords<CustomerMap, Customer>(absolutePath);
         }
     }
 }

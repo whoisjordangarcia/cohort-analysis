@@ -7,9 +7,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Invitae.CohortAnalysis.Interfaces\Invitae.CohortAnalysis.Interfaces.csproj" />
     <ProjectReference Include="..\Invitae.CohortAnalysis.Data\Invitae.CohortAnalysis.Data.csproj" />
+    <ProjectReference Include="..\Invitae.CohortAnalysis.Helpers\Invitae.CohortAnalysis.Helpers.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CsvHelper" Version="7.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.1" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Extensions.Options">

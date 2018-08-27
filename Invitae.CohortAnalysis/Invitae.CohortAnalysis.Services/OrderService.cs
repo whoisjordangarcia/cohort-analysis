@@ -13,27 +13,18 @@ namespace Invitae.CohortAnalysis.Services
     public class OrderService : IOrderService
     {
         private readonly Settings _settings;
+        private readonly ICsvService _csvService;
 
-        public OrderService(IOptions<Settings> settings)
+        public OrderService(IOptions<Settings> settings, ICsvService csvService)
         {
             _settings = settings.Value;
+            _csvService = csvService;
         }
 
-        public List<Order> GetAllRecordsFromCsv()
+        public IEnumerable<Order> LoadRecordsFromPath(string absolutePath)
         {
-            try
-            {
-                using (var streamReader = new StreamReader(_settings.OrdersCsvPath))
-                {
-                    var reader = new CsvReader(streamReader);
-                    reader.Configuration.RegisterClassMap<OrderMap>();
-                    return reader.GetRecords<Order>().ToList();
-                }
-            }
-            catch (Exception e)
-            {
-                throw new Exception($"Failed retrieving 'Order'", e);
-            }
+            return _csvService
+                .RetrieveRecords<OrderMap, Order>(absolutePath);
         }
     }
 }
