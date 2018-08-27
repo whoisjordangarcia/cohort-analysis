@@ -46,8 +46,6 @@ namespace Invitae.CohortAnalysis.Business
                 OrderNumber = order.OrderNumber,
                 TransactionDate = order.Created,
                 CohortDate = cohortDate,
-                // this doesn't work all the time for other 
-                //countries outside from US/Canada
                 CohortIdentifier = cohortDate.StartOfWeek(DayOfWeek.Sunday),
                 CohortPeriod = 
                     this.CalculateLifeCycleStage(cohortDate, 
