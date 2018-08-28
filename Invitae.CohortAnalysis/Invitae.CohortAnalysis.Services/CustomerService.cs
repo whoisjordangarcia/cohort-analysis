@@ -12,13 +12,10 @@ namespace Invitae.CohortAnalysis.Services
 {
     public class CustomerService : ICustomerService
     {
-        private readonly Settings _settings;
         private readonly ICsvService _csvService;
 
-        public CustomerService(IOptions<Settings> settings,
-                               ICsvService csvService)
+        public CustomerService(ICsvService csvService)
         {
-            _settings = settings.Value;
             _csvService = csvService;
         }
 

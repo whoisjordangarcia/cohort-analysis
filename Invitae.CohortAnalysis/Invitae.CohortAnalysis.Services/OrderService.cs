@@ -15,9 +15,8 @@ namespace Invitae.CohortAnalysis.Services
         private readonly Settings _settings;
         private readonly ICsvService _csvService;
 
-        public OrderService(IOptions<Settings> settings, ICsvService csvService)
+        public OrderService(ICsvService csvService)
         {
-            _settings = settings.Value;
             _csvService = csvService;
         }
 
