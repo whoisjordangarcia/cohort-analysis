@@ -56,10 +56,10 @@ namespace Invitae.CohortAnalysis.Interfaces
         /// </summary>
         /// <returns>The bucket.</returns>
         /// <param name="bucket">Bucket.</param>
-        /// <param name="group">Group.</param>
+        /// <param name="groupCount">Group total amount</param>
         Bucket MapBucket(IGrouping<double,
                          CohortMember> bucket,
-                         IGrouping<DateTime, CohortMember> group);
+                        int groupCount);
 
         /// <summary>
         /// Maps Orderers data

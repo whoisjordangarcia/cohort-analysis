@@ -82,14 +82,12 @@ namespace Invitae.CohortAnalysis.Business
                 Buckets = group
                     .OrderBy(item => item.CohortPeriod)
                     .GroupBy(item => item.CohortPeriod)
-                    .Select(bucket => this.MapBucket(bucket, group))
+                    .Select(bucket => this.MapBucket(bucket, group.Count()))
                     .ToList(),
             };
         }
 
-        public Bucket MapBucket(IGrouping<double, CohortMember> bucket,
-                                 IGrouping<DateTime, 
-                                 CohortMember> group)
+        public Bucket MapBucket(IGrouping<double, CohortMember> bucket, int groupCount)
         {
             var firstTimePurchasesCount = bucket
                 .Select(o => o.CustomerId)
@@ -98,17 +96,11 @@ namespace Invitae.CohortAnalysis.Business
 
             var orderersCount = bucket.Count() - firstTimePurchasesCount;
 
-            var groupCount = group.Count();
-
             return new Bucket
             {
                 BucketName = bucket.Key.ToString(),
-                OrderersCount = orderersCount > 0 ? 
-                    MapOrderersCount(orderersCount, groupCount) : 
-                    null,
-                FirstTimeCount = firstTimePurchasesCount > 0 ?
-                    MapFirstTimeCount(firstTimePurchasesCount, groupCount) : 
-                    null,
+                OrderersCount = MapOrderersCount(orderersCount, groupCount),
+                FirstTimeCount = MapFirstTimeCount(firstTimePurchasesCount, groupCount),
             };
         }
 

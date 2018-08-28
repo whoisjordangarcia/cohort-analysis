@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Invitae.CohortAnalysis.Domain.Models;
 
 namespace Invitae.CohortAnalysis.Interfaces
@@ -6,21 +7,26 @@ namespace Invitae.CohortAnalysis.Interfaces
     public interface ICohortAnalysisService
     {
         /// <summary>
-        /// Setups the cohort analysis
+        /// Validates cohort analysis setup
         /// </summary>
-        /// <param name="cohortAnalysisSetup">Cohort analysis setup data</param>
-        void SetupCohortAnalysis(CohortAnalysisSetup cohortAnalysisSetup);
+        /// <returns>
+        /// <c>true</c>, if setup was validated, <c>false</c> otherwise.</returns>
+        /// <param name="cohortAnalysisSetup">Cohort analysis setup.</param>
+        bool ValidateSetup(CohortAnalysisSetup cohortAnalysisSetup);
 
         /// <summary>
-        /// Runs the analysis.
+        /// Runs a Cohort Analysis.
         /// </summary>
-        void RunAnalysis();
+        /// <returns>The analysis.</returns>
+        /// <param name="cohortAnalysisSetup">Cohort analysis setup.</param>
+        IEnumerable<CohortGroup> RunAnalysis(CohortAnalysisSetup cohortAnalysisSetup);
 
         /// <summary>
-        /// Saves the analysis into a csv file.
+        /// Saves the Cohort Analysis into a csv file.
         /// </summary>
         /// <returns><c>true</c>, if analysis into file was saved, <c>false</c> otherwise.</returns>
         /// <param name="filePath">File path.</param>
-        bool SaveAnalysisIntoFile(string filePath);
+        /// <param name="cohortGroups">Cohort groups.</param>
+        bool SaveAnalysisIntoCsvFile(string filePath, IEnumerable<CohortGroup> cohortGroups);
     }
 }

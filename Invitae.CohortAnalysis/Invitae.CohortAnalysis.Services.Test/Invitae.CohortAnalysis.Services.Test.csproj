@@ -18,6 +18,7 @@
     <ProjectReference Include="..\Invitae.CohortAnalysis.Domain\Invitae.CohortAnalysis.Domain.csproj" />
     <ProjectReference Include="..\Invitae.CohortAnalysis.Interfaces\Invitae.CohortAnalysis.Interfaces.csproj" />
     <ProjectReference Include="..\Invitae.CohortAnalysis.Services\Invitae.CohortAnalysis.Services.csproj" />
+    <ProjectReference Include="..\Invitae.CohortAnalysis.Business\Invitae.CohortAnalysis.Business.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Extensions.Options">

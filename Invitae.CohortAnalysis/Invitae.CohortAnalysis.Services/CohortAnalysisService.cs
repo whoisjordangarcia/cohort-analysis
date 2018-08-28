@@ -24,9 +24,6 @@ namespace Invitae.CohortAnalysis.Services
         private IEnumerable<Customer> _customerData;
         private IEnumerable<Order> _orderData;
 
-        private IEnumerable<CohortGroup> _cohortAnalysisData;
-
-
         public CohortAnalysisService(IOptions<Settings> settings,
                                  ICustomerService customerService, 
                                  IOrderService orderService, 
@@ -88,14 +85,14 @@ namespace Invitae.CohortAnalysis.Services
                 });
         }
 
-        private List<string> GenerateHeaders()
+        private List<string> GenerateHeaders(IEnumerable<CohortGroup> cohortGroups)
         {
             List<string> headers = new List<string> {
                 "Cohort",
                 "Customers",
             };
 
-            var maximumBuckets = _cohortAnalysisData
+            var maximumBuckets = cohortGroups
                 .Max(item => item.Buckets.Count());
 
             for (int i = 0; i < maximumBuckets; i++)
@@ -107,11 +104,11 @@ namespace Invitae.CohortAnalysis.Services
             return headers;
         }
 
-        private List<List<string>> GenerateCohortResults()
+        private List<List<string>> GenerateCohortResults(IEnumerable<CohortGroup> cohortGroups)
         {
             List<List<string>> cohortResults = new List<List<string>>();
 
-            foreach (var cohortGroup in _cohortAnalysisData)
+            foreach (var cohortGroup in cohortGroups)
             {
                 List<string> columnData = new List<string>
                 {
@@ -121,17 +118,13 @@ namespace Invitae.CohortAnalysis.Services
 
                 foreach (var bucket in cohortGroup.Buckets)
                 {
-                    var orderersString =
-                        bucket.OrderersCount == null ?
-                              "" :
-                              $"{bucket.OrderersCount.Percentage} " +
-                              $"orderers ({bucket.OrderersCount.Count})\n";
+                    var orderersString = 
+                            $"{bucket.OrderersCount.Percentage} " +
+                            $"orderers ({bucket.OrderersCount.Count})\n";
 
-                    var firstTimePurchaseString =
-                        bucket.FirstTimeCount == null ?
-                              "" :
-                              $"{bucket.FirstTimeCount.Percentage} " +
-                              $"1st time ({bucket.FirstTimeCount.Count})";
+                    var firstTimePurchaseString = 
+                            $"{bucket.FirstTimeCount.Percentage} " +
+                            $"1st time ({bucket.FirstTimeCount.Count})";
 
                     columnData.Add(
                         $"{orderersString}{firstTimePurchaseString}");
@@ -143,19 +136,17 @@ namespace Invitae.CohortAnalysis.Services
             return cohortResults;
         }
        
-        public void SetupCohortAnalysis(CohortAnalysisSetup cohortAnalysisSetup) {
+        public bool ValidateSetup(CohortAnalysisSetup cohortAnalysisSetup) {
 
             if(cohortAnalysisSetup == null) {
                 throw new Exception("Setup data was not provided");
             }
 
-            if(string.IsNullOrEmpty(cohortAnalysisSetup.CustomerFilePath)){
+            if(string.IsNullOrEmpty(cohortAnalysisSetup.CustomerFilePath)) {
                 throw new Exception("Customer file path was not provided");
             }
 
             if(!File.Exists(cohortAnalysisSetup.CustomerFilePath)) {
-
-
                 throw new Exception(
                     $"Customer file path: {cohortAnalysisSetup.CustomerFilePath} " +
                     "does not exist");
@@ -186,14 +177,16 @@ namespace Invitae.CohortAnalysis.Services
                                     $"{cohortAnalysisSetup.TimeZone}");
             }
 
-            _cohortAnalysisSetup = cohortAnalysisSetup;
+            return true;
         }
 
-        public void RunAnalysis()
+        public IEnumerable<CohortGroup> RunAnalysis(CohortAnalysisSetup cohortAnalysisSetup)
         {
-            if(_cohortAnalysisSetup == null) {
+            if(cohortAnalysisSetup == null) {
                 throw new Exception("Can not run analysis without a setting up.");
             }
+
+            this.ValidateSetup(cohortAnalysisSetup);
 
             this.LoadData(
                 _cohortAnalysisSetup.CustomerFilePath, 
@@ -205,19 +198,19 @@ namespace Invitae.CohortAnalysis.Services
             IEnumerable<CohortMember> cohortMembers = _cohortCalculationLogic
                 .GenerateCohortMembersBasedOnCustomerSignup(_orderData, _customerData);
 
-            _cohortAnalysisData = _cohortCalculationLogic
+            return _cohortCalculationLogic
                 .MapCohortGroups(cohortMembers)
                 .ToList();
         }
 
-        public bool SaveAnalysisIntoFile(string filePath)
+        public bool SaveAnalysisIntoCsvFile(string filePath, IEnumerable<CohortGroup> cohortGroups)
         {
             if(string.IsNullOrEmpty(filePath)) {
                 throw new Exception("file path not provided.");
             }
 
-            List<string> headers = this.GenerateHeaders();
-            List<List<string>> cohortResults = this.GenerateCohortResults();
+            List<string> headers = this.GenerateHeaders(cohortGroups);
+            List<List<string>> cohortResults = this.GenerateCohortResults(cohortGroups);
 
             return _csvService.SaveRecords(
                 filePath, headers, cohortResults);
