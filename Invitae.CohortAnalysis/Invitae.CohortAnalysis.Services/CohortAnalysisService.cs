@@ -189,11 +189,11 @@ namespace Invitae.CohortAnalysis.Services
             this.ValidateSetup(cohortAnalysisSetup);
 
             this.LoadData(
-                _cohortAnalysisSetup.CustomerFilePath, 
-                _cohortAnalysisSetup.OrderFilePath
+                cohortAnalysisSetup.CustomerFilePath,
+                cohortAnalysisSetup.OrderFilePath
             );
 
-            this.ConvertDataDatesWithTimeZone(_cohortAnalysisSetup.TimeZone);
+            this.ConvertDataDatesWithTimeZone(cohortAnalysisSetup.TimeZone);
 
             IEnumerable<CohortMember> cohortMembers = _cohortCalculationLogic
                 .GenerateCohortMembersBasedOnCustomerSignup(_orderData, _customerData);
