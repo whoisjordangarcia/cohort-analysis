@@ -4,10 +4,9 @@ WORKDIR /src
 COPY . .
 
 RUN ["dotnet", "restore", "Invitae.CohortAnalysis.Business.Test/Invitae.CohortAnalysis.Business.Test.csproj"]
-RUN ["dotnet", "test", "Invitae.CohortAnalysis.Business.Test/Invitae.CohortAnalysis.Business.Test.csproj"]
-
-RUN ["dotnet", "restore", "Invitae.CohortAnalysis.Business.Test/Invitae.CohortAnalysis.Business.Test.csproj"]
-RUN ["dotnet", "test", "Invitae.CohortAnalysis.Business.Test/Invitae.CohortAnalysis.Business.Test.csproj"]
-
+RUN ["dotnet", "restore", "Invitae.CohortAnalysis.Helpers.Test/Invitae.CohortAnalysis.Helpers.Test.csproj"]
 RUN ["dotnet", "restore", "Invitae.CohortAnalysis.Services.Test/Invitae.CohortAnalysis.Services.Test.csproj"]
+
+RUN ["dotnet", "test", "Invitae.CohortAnalysis.Business.Test/Invitae.CohortAnalysis.Business.Test.csproj"]
+RUN ["dotnet", "test", "Invitae.CohortAnalysis.Helpers.Test/Invitae.CohortAnalysis.Helpers.Test.csproj"]
 RUN ["dotnet", "test", "Invitae.CohortAnalysis.Services.Test/Invitae.CohortAnalysis.Services.Test.csproj"]
