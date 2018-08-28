@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Invitae.CohortAnalysis.Domain.Models;
 using Invitae.CohortAnalysis.Interfaces;
 using Microsoft.Extensions.Options;
@@ -102,24 +103,27 @@ namespace Invitae.CohortAnalysis.ConsoleApplication
 
             timezone = this.RetrieveTimeZoneFromUser();
 
-            _cohortAnalysisService.SetupCohortAnalysis(new CohortAnalysisSetup
+            var cohortAnalysisSetup = new CohortAnalysisSetup
             {
                 CustomerFilePath = $"{_settings.DataFilesFolderPath}/{customerFileName}",
                 OrderFilePath = $"{_settings.DataFilesFolderPath}/{orderFileName}",
                 TimeZone = timezone,
-            });
+            };
+
+            _cohortAnalysisService.ValidateSetup(cohortAnalysisSetup);
 
             Console.WriteLine("Running Cohort Analysis....");
 
-            _cohortAnalysisService.RunAnalysis();
+            IEnumerable<CohortGroup> cohortAnalysisData = _cohortAnalysisService.RunAnalysis(cohortAnalysisSetup);
 
             Console.WriteLine("Cohort Analysis Completed...");
 
             outputFileName = this.RetrieveOutputFileNameFromUser();
 
             bool didAnalysisSave = _cohortAnalysisService
-                .SaveAnalysisIntoFile(
-                    $"{_settings.OutputResultsFolderPath}/{outputFileName}");
+                .SaveAnalysisIntoCsvFile(
+                    $"{_settings.OutputResultsFolderPath}/{outputFileName}", 
+                    cohortAnalysisData);
 
             if(didAnalysisSave) {
                 Console.WriteLine("Cohort Analysis Completed...");
