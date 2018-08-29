@@ -73,14 +73,17 @@ namespace Invitae.CohortAnalysis.Services
                 .Select(customer =>
                 {
                     customer.Created = TimeZoneInfo
-                        .ConvertTime(customer.Created, timeZoneInfo);
+                        .ConvertTime(DateTime
+                            .SpecifyKind(customer.Created, DateTimeKind.Utc) , timeZoneInfo);
                     return customer;
                 });
 
             _orderData = _orderData
                 .Select(order =>
                 {
-                    order.Created = TimeZoneInfo.ConvertTime(order.Created, timeZoneInfo);
+                    order.Created = TimeZoneInfo
+                        .ConvertTime(DateTime
+                            .SpecifyKind(order.Created, DateTimeKind.Utc), timeZoneInfo);
                     return order;
                 });
         }

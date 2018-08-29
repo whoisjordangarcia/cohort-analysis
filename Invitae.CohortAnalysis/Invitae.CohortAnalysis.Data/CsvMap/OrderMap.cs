@@ -19,7 +19,7 @@ namespace Invitae.CohortAnalysis.Data.CsvMap
             Map(m => m.Created)
                 .Name("created")
                 // This enforces mapping date to UTC
-                .TypeConverterOption.DateTimeStyles(DateTimeStyles.AssumeUniversal);
+                .TypeConverterOption.DateTimeStyles(DateTimeStyles.AdjustToUniversal);
         }
     }
 }
