@@ -1,8 +1,8 @@
 # cohort_analysis
 cohort analysis on a set of customers to help identify changes in ordering behavior based on their signup date.
 
-## How to run the Cohort Analysis Application?
-This application is using dotnet core 2.1 and has been containerized using Docker. Navigate to `Invitae.CohortAnalysis` and run the following command
+### How to run the Cohort Analysis Application?
+This application is using dotnet core 2.1 and has been containerized using Docker. If you don't have docker installed click [here](https://store.docker.com/) to download. Navigate to `Invitae.CohortAnalysis` and run the following command:
 
 ```sh
 docker-compose build
@@ -23,11 +23,10 @@ docker-compose run cohort-analysis-console-application -t
 ### Preview
 ![preview](https://cl.ly/7e7df49ff1e2/Screen%252520Recording%2525202018-08-26%252520at%25252011.48%252520PM.gif)
 
-
 ### Output Result in .csv format
 ![preview](https://cl.ly/a499f1/Screen%252520Shot%2525202018-08-28%252520at%2525208.20.50%252520PM.png)
 
-## How to run the test cases?
+### How to run the test cases?
 Navigate to `./Invitae.CohortAnalysis` and run the following command
 ```sh
 docker build -f Dockerfile-tests .
