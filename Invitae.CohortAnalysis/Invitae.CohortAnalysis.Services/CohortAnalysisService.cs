@@ -20,7 +20,6 @@ namespace Invitae.CohortAnalysis.Services
         private readonly ICohortCalculationLogic _cohortCalculationLogic;
         private readonly ICsvService _csvService;
 
-        private CohortAnalysisSetup _cohortAnalysisSetup;
         private IEnumerable<Customer> _customerData;
         private IEnumerable<Order> _orderData;
 
