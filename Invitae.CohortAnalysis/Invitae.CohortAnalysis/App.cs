@@ -27,7 +27,7 @@ namespace Invitae.CohortAnalysis.ConsoleApplication
             string defaultFileName = "customers.csv";
 
             Console.WriteLine("Please provide customer data filename within " +
-                              "the DataFiles folder.");
+                              "the ./DataFiles folder.");
             Console.WriteLine($"Note: Empty name will use default {defaultFileName}");
 
             string customerFileName = getUserInput();
@@ -46,7 +46,7 @@ namespace Invitae.CohortAnalysis.ConsoleApplication
             string defaultFileName = "orders.csv";
 
             Console.WriteLine("Please provide order data filename within the " +
-                              "DataFiles folder.");
+                              "./DataFiles folder.");
             Console.WriteLine("Note: Empty name will use default " +
                               $"{defaultFileName}");
 
@@ -80,7 +80,7 @@ namespace Invitae.CohortAnalysis.ConsoleApplication
 
         private string RetrieveOutputFileNameFromUser() {
             Console.WriteLine("Please provide output filename within the " +
-                  "OutputResults folder.");
+                  "./OutputResults folder.");
 
             Console.WriteLine("Please provide output path to save Cohort Analysis.");
             Console.WriteLine("Example: 'CohortResults.csv'");

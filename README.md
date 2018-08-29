@@ -17,7 +17,8 @@ docker-compose run cohort-analysis-console-application -t
     Note: Empty name will use default customer.csv
 ...
 ```
-**NOTE:** any data files or outputted results will read/save within `./DataFiles` and `./OutputResults`
+- ./DataFiles - Folder to consume customer and order data
+- ./OutputResults - All Cohort Analysis are saved within this folder
 
 ### Preview
 ![preview](https://cl.ly/7e7df49ff1e2/Screen%252520Recording%2525202018-08-26%252520at%25252011.48%252520PM.gif)
@@ -27,7 +28,7 @@ docker-compose run cohort-analysis-console-application -t
 ![preview](https://cl.ly/a499f1/Screen%252520Shot%2525202018-08-28%252520at%2525208.20.50%252520PM.png)
 
 ## How to run the test cases?
-Navigate to `Invitae.CohortAnalysis` and run the following command
+Navigate to `./Invitae.CohortAnalysis` and run the following command
 ```sh
 docker build -f Dockerfile-tests .
 ```
