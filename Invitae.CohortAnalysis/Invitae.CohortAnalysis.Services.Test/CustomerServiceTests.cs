@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Invitae.CohortAnalysis.Data.CsvMap;
 using Invitae.CohortAnalysis.Domain.Models;
 using Invitae.CohortAnalysis.Interfaces;
 using Microsoft.Extensions.Options;
@@ -12,29 +13,25 @@ namespace Invitae.CohortAnalysis.Services.Test
 {
     public class CustomerServiceTests
     {
+        string MOCK_FOLDER_PATH = "../../../../Invitae.CohortAnalysis.Services.Test/MockData";
+
         [Fact]
-        public void LoadRecordsFromPath_GivenAbsolutePathIsEmpty_Then_ReturnRecordsFromDefaultSettings()
+        public void LoadRecordsFromPath_ReturnsRecordsFromCsvFile()
         {
-
-            Settings settings = new Settings { 
-                CustomerDefaultFileName = 
-                    $"../../../../Invitae.CohortAnalysis.Services.Test/MockData/customers_mock.csv" 
-            };
-
-            Mock<IOptions<Settings>> mockSettings = new Mock<IOptions<Settings>>();
-            mockSettings.Setup(ap => ap.Value).Returns(settings);
+            //arrange
             CsvService csvService = new CsvService();
+            CustomerService service = new CustomerService(csvService);
 
-            CustomerService service = new CustomerService(mockSettings.Object, csvService);
-
-            IEnumerable<Customer> result = service.LoadRecordsFromPath(null);
+            //act
+            IEnumerable<Customer> result = service.LoadRecordsFromPath($"{MOCK_FOLDER_PATH}/customers_mock.csv");
             List<Customer> resultList = result.ToList();
 
+            //assert
             Assert.Equal(5, resultList.Count);
             Assert.Equal(35410, resultList[0].Id);
-            Assert.Equal(new DateTime(2015, 07, 03, 22, 01, 11), resultList[0].Created);
+            Assert.Equal(new DateTime(2015, 07, 03, 22, 01, 11, DateTimeKind.Local), resultList[0].Created);
             Assert.Equal(1, resultList[4].Id);
-            Assert.Equal(new DateTime(2018, 05, 11, 11, 11, 11), resultList[4].Created);
+            Assert.Equal(new DateTime(2018, 05, 11, 11, 11, 11, DateTimeKind.Utc), resultList[4].Created);
         }
     }
 }

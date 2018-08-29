@@ -27,11 +27,9 @@ namespace Invitae.CohortAnalysis.Services.Test
             List<Customer> resultList = result.ToList();
             Assert.Equal(5, resultList.Count);
             Assert.Equal(35410, resultList[0].Id);
-            // Returns in UTC
-            Assert.Equal(new DateTime(2015, 07, 03, 18, 01, 11, DateTimeKind.Utc), resultList[0].Created);
+            Assert.Equal(new DateTime(2015, 07, 03, 22, 01, 11, DateTimeKind.Local), resultList[0].Created);
             Assert.Equal(1, resultList[4].Id);
-            // Returns in UTC
-            Assert.Equal(new DateTime(2018, 05, 11, 07, 11, 11, DateTimeKind.Utc), resultList[4].Created);
+            Assert.Equal(new DateTime(2018, 05, 11, 11, 11, 11, DateTimeKind.Local), resultList[4].Created);
         }
 
         [Fact]

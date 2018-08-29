@@ -11,30 +11,30 @@ namespace Invitae.CohortAnalysis.Services.Test
 {
     public class OrderServiceTests
     {
+        string MOCK_FOLDER_PATH = "../../../../Invitae.CohortAnalysis.Services.Test/MockData";
+
         [Fact]
-        public void LoadRecordsFromPath_GivenAbsolutePathIsEmpty_Then_ReturnRecordsFromDefaultSettings()
+        public void LoadRecordsFromPath_ReturnsRecordsFromCsvFile()
         {
-
-            Settings settings = new Settings { OrderDefaultFileName = $"../../../../Invitae.CohortAnalysis.Services.Test/MockData/orders_mock.csv" };
-            Mock<IOptions<Settings>> mockSettings = new Mock<IOptions<Settings>>();
-            mockSettings.Setup(ap => ap.Value).Returns(settings);
+            //arrange
             CsvService csvService = new CsvService();
+            OrderService service = new OrderService(csvService);
 
-            OrderService service = new OrderService(mockSettings.Object, csvService);
-
-            IEnumerable<Order> result = service.LoadRecordsFromPath(null);
+            //act
+            IEnumerable<Order> result = service.LoadRecordsFromPath($"{MOCK_FOLDER_PATH}/orders_mock.csv");
             List<Order> resultList = result.ToList();
 
+            //assert
             Assert.Equal(4, resultList.Count);
             Assert.Equal(1709, resultList[0].Id);
             Assert.Equal(36, resultList[0].OrderNumber);
             Assert.Equal(344, resultList[0].UserId);
-            Assert.Equal(new DateTime(2014, 10, 28, 00, 20, 01), resultList[0].Created);
+            Assert.Equal(new DateTime(2014, 10, 28, 00, 20, 01, DateTimeKind.Local), resultList[0].Created);
 
             Assert.Equal(1426, resultList[3].Id);
             Assert.Equal(2, resultList[3].OrderNumber);
             Assert.Equal(1225, resultList[3].UserId);
-            Assert.Equal(new DateTime(2014, 10, 15, 18, 33, 38), resultList[3].Created);
+            Assert.Equal(new DateTime(2014, 10, 15, 18, 33, 38, DateTimeKind.Local), resultList[3].Created);
         }
     }
 }
