@@ -24,7 +24,7 @@ docker-compose run cohort-analysis-console-application -t
 
 
 ### Output Result in .csv format
-![preview](https://cl.ly/7ed37767c70e/Screen%252520Shot%2525202018-08-26%252520at%25252011.50.41%252520PM.png)
+![preview](https://cl.ly/a499f1/Screen%252520Shot%2525202018-08-28%252520at%2525208.20.50%252520PM.png)
 
 ## How to run the test cases?
 Navigate to `Invitae.CohortAnalysis` and run the following command
@@ -33,5 +33,34 @@ docker build -f Dockerfile-tests .
 ```
 
 ```sh
-#TODO add test results here
+Test run for /src/Invitae.CohortAnalysis.Business.Test/bin/Debug/netcoreapp2.1/Invitae.CohortAnalysis.Business.Test.dll(.NETCoreApp,Version=v2.1)
+Microsoft (R) Test Execution Command Line Tool Version 15.8.0
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+
+Total tests: 9. Passed: 9. Failed: 0. Skipped: 0.
+Test Run Successful.
+Test execution time: 1.7156 Seconds
+...
+Test run for /src/Invitae.CohortAnalysis.Helpers.Test/bin/Debug/netcoreapp2.1/Invitae.CohortAnalysis.Helpers.Test.dll(.NETCoreApp,Version=v2.1)
+Microsoft (R) Test Execution Command Line Tool Version 15.8.0
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+
+Total tests: 11. Passed: 11. Failed: 0. Skipped: 0.
+Test Run Successful.
+...
+
+Test run for /src/Invitae.CohortAnalysis.Services.Test/bin/Debug/netcoreapp2.1/Invitae.CohortAnalysis.Services.Test.dll(.NETCoreApp,Version=v2.1)
+Microsoft (R) Test Execution Command Line Tool Version 15.8.0
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+
+Total tests: 16. Passed: 16. Failed: 0. Skipped: 0.
+Test Run Successful.
+Test execution time: 2.0726 Seconds
+...
 ```
