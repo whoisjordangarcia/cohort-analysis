@@ -31,7 +31,7 @@ namespace Invitae.CohortAnalysis.Services.Test
             Assert.Equal(35410, resultList[0].Id);
             Assert.Equal(new DateTime(2015, 07, 03, 22, 01, 11, DateTimeKind.Local), resultList[0].Created);
             Assert.Equal(1, resultList[4].Id);
-            Assert.Equal(new DateTime(2018, 05, 11, 11, 11, 11, DateTimeKind.Utc), resultList[4].Created);
+            Assert.Equal(new DateTime(2018, 05, 11, 11, 11, 11, DateTimeKind.Local), resultList[4].Created);
         }
     }
 }
