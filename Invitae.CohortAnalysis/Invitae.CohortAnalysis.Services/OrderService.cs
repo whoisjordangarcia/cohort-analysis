@@ -12,7 +12,6 @@ namespace Invitae.CohortAnalysis.Services
 {
     public class OrderService : IOrderService
     {
-        private readonly Settings _settings;
         private readonly ICsvService _csvService;
 
         public OrderService(ICsvService csvService)
