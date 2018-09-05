@@ -21,11 +21,11 @@ namespace Invitae.CohortAnalysis.Business
             IEnumerable<Order> orders, 
             IEnumerable<Customer> customers)
         {
-            return orders
-                .Join(customers,
-                    args => args.UserId,
-                    args => args.Id,
-                      (order, customer) => this.MapCohortMember(order, customer));
+            return from c in customers
+                join o in orders
+                on c.Id equals o.UserId
+                into a from b in a.DefaultIfEmpty(new Order())
+                select this.MapCohortMember(b, c);
         }
 
         public double CalculateLifeCycleStage(DateTime cohortDate, 
@@ -43,14 +43,14 @@ namespace Invitae.CohortAnalysis.Business
             return new CohortMember
             {
                 CustomerId = customer.Id,
-                OrderNumber = order.OrderNumber,
-                TransactionDate = order.Created,
+                OrderNumber = order?.OrderNumber,
+                TransactionDate = order?.Created,
                 CohortDate = cohortDate,
                 CohortIdentifier = cohortDate.StartOfWeek(DayOfWeek.Sunday),
-                CohortPeriod = 
+                CohortPeriod = order != null ? 
                     this.CalculateLifeCycleStage(cohortDate, 
                                                  order.Created,
-                                                 _settings.LifeCycleRange),
+                                                 _settings.LifeCycleRange) : -1,
             };
         }
 
@@ -72,54 +72,64 @@ namespace Invitae.CohortAnalysis.Business
 
         public CohortGroup MapCohortGroup(IGrouping<DateTime, CohortMember> group)
         {
+            int totalUniqueCustomersWithinCohort = group
+                .Select(o => o.CustomerId)
+                .Distinct()
+                .Count();
+    
             return new CohortGroup
             {
                 CohortRange = FormatCohortRange(
                     group.Min(g => g.CohortDate), 
                     group.Max(g => g.CohortDate)
                 ),
-                Customers = group.Count(),
+                Customers = totalUniqueCustomersWithinCohort,
                 Buckets = group
+                    .Where(item => item.CohortPeriod > 0)
                     .OrderBy(item => item.CohortPeriod)
                     .GroupBy(item => item.CohortPeriod)
-                    .Select(bucket => this.MapBucket(bucket, group.Count()))
+                    .Select(bucket => this.MapBucket(bucket, totalUniqueCustomersWithinCohort))
                     .ToList(),
             };
         }
 
-        public Bucket MapBucket(IGrouping<double, CohortMember> bucket, int groupCount)
+        public Bucket MapBucket(IGrouping<double?, CohortMember> bucket, 
+                                int numberOfCustomersWithinGroup)
         {
-            var firstTimePurchasesCount = bucket
-                .Select(o => o.CustomerId)
-                .Distinct()
-                .Count();
 
-            var orderersCount = bucket.Count() - firstTimePurchasesCount;
+            var totalAmountOfOrders = bucket
+                .Count(o => o.OrderNumber != null);
+
+            var totalAmountOfFirstTimePurchasers = bucket
+                .Where(o => o.OrderNumber != null)
+                .Select(o => o.CustomerId).Distinct().Count();
 
             return new Bucket
             {
                 BucketName = bucket.Key.ToString(),
-                OrderersCount = MapOrderersCount(orderersCount, groupCount),
-                FirstTimeCount = MapFirstTimeCount(firstTimePurchasesCount, groupCount),
+                OrderersCount = 
+                    MapOrderersCount(totalAmountOfOrders, numberOfCustomersWithinGroup),
+                FirstTimeCount = 
+                    MapFirstTimeCount(totalAmountOfFirstTimePurchasers, numberOfCustomersWithinGroup),
             };
         }
 
         public OrderersCount MapOrderersCount(int orderersCount, 
-                                                      int groupCount) {
+                                                      int numberOfCustomersWithinGroup) {
             return new OrderersCount
             {
                 Percentage = PercentageUtils
-                    .FormatToPercentage(orderersCount, groupCount),
+                    .FormatToPercentage(orderersCount, numberOfCustomersWithinGroup),
                 Count = orderersCount,
             };
         }
 
         public FirstTimeCount MapFirstTimeCount(int firstTimeCount, 
-                                                        int groupCount) {
+                                                        int numberOfCustomersWithinGroup) {
             return new FirstTimeCount
             {
                 Percentage = PercentageUtils
-                    .FormatToPercentage(firstTimeCount, groupCount),
+                    .FormatToPercentage(firstTimeCount, numberOfCustomersWithinGroup),
                 Count = firstTimeCount,
             };
         }

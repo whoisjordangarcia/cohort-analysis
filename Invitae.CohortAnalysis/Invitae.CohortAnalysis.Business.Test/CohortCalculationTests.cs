@@ -92,7 +92,7 @@ namespace Invitae.CohortAnalysis.Business.Test
                 new CohortCalculationLogic(mockSettings.Object);
 
 
-            IEnumerable<IGrouping<double, CohortMember>> bucket =
+            IEnumerable<IGrouping<double?, CohortMember>> bucket =
                 cohortMembers.GroupBy(cm => cm.CohortPeriod);
 
             //act
@@ -100,8 +100,8 @@ namespace Invitae.CohortAnalysis.Business.Test
 
             //assert
             Assert.Equal("1", result.BucketName);
-            Assert.Equal("0%", result.OrderersCount.Percentage);
-            Assert.Equal(0, result.OrderersCount.Count);
+            Assert.Equal("33.33%", result.OrderersCount.Percentage);
+            Assert.Equal(1, result.OrderersCount.Count);
             Assert.Equal("33.33%", result.FirstTimeCount.Percentage);
             Assert.Equal(1, result.FirstTimeCount.Count);
         }
