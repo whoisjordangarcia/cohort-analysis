@@ -34,7 +34,7 @@ namespace Invitae.CohortAnalysis.Interfaces
         /// <param name="customers">Customer list</param>
         IEnumerable<CohortMember> GenerateCohortMembersBasedOnCustomerSignup(
             IEnumerable<Order> orders, IEnumerable<Customer> customers);
-            
+
         /// <summary>
         /// Maps the cohort groups.
         /// </summary>
@@ -47,8 +47,8 @@ namespace Invitae.CohortAnalysis.Interfaces
         /// Maps the cohort member.
         /// </summary>
         /// <returns>The cohort member.</returns>
-        /// <param name="order">Order data</param>
-        /// <param name="customer">Customer data</param>
+        /// <param name="order">Order.</param>
+        /// <param name="customer">Customer.</param>
         CohortMember MapCohortMember(Order order, Customer customer);
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Invitae.CohortAnalysis.Interfaces
         /// <returns>The bucket.</returns>
         /// <param name="bucket">Bucket.</param>
         /// <param name="groupCount">Group total amount</param>
-        Bucket MapBucket(IGrouping<double,
+        Bucket MapBucket(IGrouping<double?,
                          CohortMember> bucket,
                         int groupCount);
 

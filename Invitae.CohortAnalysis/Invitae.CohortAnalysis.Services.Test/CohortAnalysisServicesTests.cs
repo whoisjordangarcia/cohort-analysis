@@ -347,9 +347,9 @@ namespace Invitae.CohortAnalysis.Services.Test
                 List<dynamic> recordList = records.ToList();
 
                 Assert.Equal("06/28/15 - 07/01/15", recordList.First().Cohort);
-                Assert.Equal("82 customers", recordList.First().Customers);
+                Assert.Equal("363 customers", recordList.First().Customers);
                 Assert.Equal("01/21/15 - 01/24/15", recordList.Last().Cohort);
-                Assert.Equal("19 customers", recordList.Last().Customers);
+                Assert.Equal("81 customers", recordList.Last().Customers);
             }
         }
     }
